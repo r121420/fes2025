@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ケサディーヤ材料管理・単価計算</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* ひとこと/備考列の幅を制限 */
+        th:nth-child(3), td:nth-child(3) {
+            width: 40%;
+            max-width: 300px;
+        }
+
+        th:nth-child(1), td:nth-child(1) {
+            width: 25%;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 35%;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #f0f0f0;
+        }
+
+        .calc-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .calc-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .calc-button:hover {
+            background: #555;
+        }
+
+        .results {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results table th {
+            background: #28a745;
+            color: white;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 1.1rem;
+        }
+
+        .comment {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #856404;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            /* スマホでは横スクロール可能に */
+            .table-container {
+                overflow-x: auto;
+                margin: 0 -20px;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+
+            .calc-button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ケサディーヤ材料管理・単価計算</h1>
+        </div>
+
+        <div class="content">
+            <!-- 絶対に必要な材料 -->
+            <div class="section">
+                <h2>〇 絶対に必要な材料</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>材料名</th>
+                                <th>必要数</th>
+                                <th>ひとこと</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>トルティーヤ</td>
+                                <td>1000～1200枚</td>
+                                <td class="comment">小麦粉製orコーン製は、現在検討中です。<br>直径20～25 cmくらい</td>
+                            </tr>
+                            <tr>
+                                <td>かけるチーズ</td>
+                                <td>約15 kg</td>
+                                <td class="comment">恐ろしい量ですね。</td>
+                            </tr>
+                            <tr>
+                                <td>包む紙</td>
+                                <td>1200枚</td>
+                                <td class="comment">ネット販売が一番安いかな。</td>
+                            </tr>
+                            <tr>
+                                <td>サラダ油</td>
+                                <td>2000mL</td>
+                                <td class="comment">＜なし＞</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- チョコマシュマロケサディーヤ -->
+            <div class="section">
+                <h2>〇 チョコマシュマロケサディーヤ</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>材料名</th>
+                                <th>必要数</th>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>マシュマロ</td>
+                                <td>約6㎏</td>
+                                <td class="comment">小さめサイズの方が都合はいいかな</td>
+                            </tr>
+                            <tr>
+                                <td>チョコソース</td>
+                                <td>約6L</td>
+                                <td class="comment">上からかけるタイプのやつ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ツナマヨケサディーヤ -->
+            <div class="section">
+                <h2>〇 ツナマヨケサディーヤ</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>材料名</th>
+                                <th>必要数</th>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ツナ</td>
+                                <td>約6 kg</td>
+                                <td class="comment">計算したら86缶になりました。<br>恐ろしいですね。</td>
+                            </tr>
+                            <tr>
+                                <td>マヨネーズ</td>
+                                <td>？</td>
+                                <td class="comment"></td>
+                            </tr>
+                            <tr>
+                                <td>コーン</td>
+                                <td>約10 kg</td>
+                                <td class="comment">缶でもパックでも</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- メキシカンケサディーヤ -->
+            <div class="section">
+                <h2>〇 メキシカンケサディーヤ</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>材料名</th>
+                                <th>必要数</th>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>レトルト</td>
+                                <td>6㎏</td>
+                                <td class="comment">どうしようかなぁ...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 使用量の説明 -->
+            <div class="note">
+                <strong>使用量について：</strong><br>
+                全ての商品に、トルティーヤ1枚、サラダ油4g、包み紙1枚を用いる。<br>
+                チョコマシュマロケサディーヤは、マシュマロ15g、チョコソース20g<br>
+                ツナマヨケサディーヤは、ツナ20g、チーズ25g、マヨネーズ10g、コーン20gを使う。<br>
+                メキシカンケサディーヤは、チーズ25g、レトルト40gを用いる。
+            </div>
+
+            <!-- 単価計算 -->
+            <div class="calc-section">
+                <h2>単価計算＆ひとこと</h2>
+                <p>赤字が怖いですね。</p>
+                <button class="calc-button" onclick="calculatePrices()">単価を計算する</button>
+                
+                <div class="results" id="results">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>商品名</th>
+                                    <th>単価</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>チョコマシュマロケサディーヤ</td>
+                                    <td class="price" id="choco-price">-</td>
+                                </tr>
+                                <tr>
+                                    <td>ツナマヨケサディーヤ</td>
+                                    <td class="price" id="tuna-price">-</td>
+                                </tr>
+                                <tr>
+                                    <td>メキシカンケサディーヤ</td>
+                                    <td class="price" id="mexican-price">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 材料の単価データ（1g or 1枚あたりの価格、円）
+        const prices = {
+            tortilla: 34,      // トルティーヤ（1枚あたり）
+            cheese: 0.88,      // かけるチーズ（1gあたり）
+            paper: 3.5,        // 包む紙（1枚あたり）
+            oil: 0.5,          // サラダ油（1gあたり）
+            marshmallow: 0.8,  // マシュマロ（1gあたり）
+            chocolate: 0.82,   // チョコソース（1gあたり）
+            tuna: 1.32,        // ツナ（1gあたり）
+            mayo: 1.55,        // マヨネーズ（1gあたり）
+            corn: 0.26,        // コーン（1gあたり）
+            retort: 5          // レトルト（1gあたり）
+        };
+
+        function calculatePrices() {
+            // 共通材料のコスト
+            const commonCost = prices.tortilla * 1 + prices.oil * 4 + prices.paper * 1;
+
+            // チョコマシュマロケサディーヤ
+            const chocoCost = commonCost + 
+                prices.marshmallow * 15 + 
+                prices.chocolate * 20;
+
+            // ツナマヨケサディーヤ
+            const tunaCost = commonCost + 
+                prices.tuna * 20 + 
+                prices.cheese * 25 + 
+                prices.mayo * 10 + 
+                prices.corn * 20;
+
+            // メキシカンケサディーヤ
+            const mexicanCost = commonCost + 
+                prices.cheese * 25 + 
+                prices.retort * 40;
+
+            // 結果を表示
+            document.getElementById('choco-price').textContent = `¥${chocoCost.toFixed(2)}`;
+            document.getElementById('tuna-price').textContent = `¥${tunaCost.toFixed(2)}`;
+            document.getElementById('mexican-price').textContent = `¥${mexicanCost.toFixed(2)}`;
+
+            // 結果セクションを表示
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
