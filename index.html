@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ケサディーヤ原価計算システム</title>
+    <title>ケサディーヤ | 神戸高専祭　2025</title>
+    
+   
+    <meta name="description" content="メキシコの家庭料理、ケサディーヤ。香ばしくてとろける美味しさが魅力です。焼き立てアツアツ、高専祭限定のこだわりの味をお届けします。"/>
+    <meta property="og:title" content="神戸高専　ESS部">
+    <meta property="og:site_name" content="神戸高専　ESS部">
+    <meta name="robots" content="max-image-preview:large" />
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja-JP">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="メキシコの家庭料理、ケサディーヤ。香ばしくてとろける美味しさが魅力です。焼き立てアツアツ、高専祭限定のこだわりの味をお届けします。" />
+    <meta name="twitter:card" content="summary">
+    <link href="icon.png" rel="apple-touch-icon">
+    <link href="icon.png" rel="icon" type="image/png">
+    
     <style>
         * {
             margin: 0;
@@ -12,735 +26,422 @@
         }
 
         body {
-            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
-            background: linear-gradient(135deg, #98c8ef 0%, #9be8c4 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Yu Gothic', 'Hiragino Sans', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .header {
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            margin-bottom: 40px;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            padding: 0 20px;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #667eea, #3288de);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .logo {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 700;
+            animation: shimmer 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 20px;
-            font-weight: 500;
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
-        .worry-quote {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 20px;
-            border-radius: 16px;
-            margin: 20px 0;
-            text-align: center;
-            font-style: italic;
-            color: #495057;
-            border-left: 4px solid #667eea;
+        .tagline {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            letter-spacing: 0.1em;
+            color: #d4af37;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: #d4af37;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
 
         .section {
-            margin-bottom: 30px;
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .section h2 {
-            color: #333;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
+        .section-title {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            letter-spacing: 0.05em;
+            margin-bottom: 50px;
+            color: #d4af37;
+            text-align: center;
+            position: relative;
         }
 
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .material-item {
-            background: #f8f9fa;
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-        }
-
-        .material-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: #667eea;
-        }
-
-        .material-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .material-comment {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .material-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .usage-info {
-            font-size: 0.9rem;
-            color: #28a745;
-            font-weight: 500;
-        }
-
-        .price-input {
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 8px;
-            padding: 8px 12px;
-            border: 2px solid #e9ecef;
-            transition: border-color 0.3s ease;
-        }
-
-        .price-input:focus-within {
-            border-color: #667eea;
-        }
-
-        .price-input input {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
-            border: none;
-            text-align: right;
-            font-weight: 600;
-            color: #333;
-            background: transparent;
-            font-size: 1rem;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
         }
 
-        .price-input input:focus {
-            outline: none;
-        }
-
-        .price-unit {
-            color: #6c757d;
-            font-size: 0.9rem;
-            margin-left: 5px;
-            font-weight: 500;
-        }
-
-        .calculation-section {
-            background: linear-gradient(135deg, #d5dbe3, #cadfd1);
-            color: black;
-            border: none;
-        }
-
-        .calculation-section h2 {
-            color: black;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+        .intro-text {
+            max-width: 600px;
             text-align: center;
-            font-weight: 600;
-        }
-
-        .ingredient-list {
-            margin-bottom: 20px;
-        }
-
-        .ingredient {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
-        }
-
-        .total-cost {
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-top: 15px;
-        }
-
-        .profit-analysis {
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .profit-excellent {
-            background: rgba(5, 0, 230, 0.3);
-            color: #fff;
-        }
-
-        .profit-good {
-            background: rgba(0, 170, 21, 0.3);
-            color: #fff;
-        }
-
-        .profit-warning {
-            background: rgba(234, 158, 0, 0.3);
-            color: #fff;
-        }
-
-        .profit-danger {
-            background: rgba(255, 13, 19, 0.3);
-            color: #fff;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .update-btn {
-            display: block;
-            width: 250px;
-            margin: 40px auto;
-            padding: 16px 32px;
-            background: linear-gradient(45deg, #28a745, #20c997);
-            color: white;
-            border: none;
-            border-radius: 50px;
             font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+            /* 修正点: line-heightを調整し、モバイルでの改行後の行のまとまりを良くする */
+            line-height: 1.8; 
+            color: #ccc;
+            margin-bottom: 60px;
+            padding: 0 20px;
         }
 
-        .update-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
-        }
-
-        .note {
-            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-            border: 1px solid #ffd700;
-            color: #856404;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .stats-grid {
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
-            margin-top: 30px;
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 60px;
         }
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 12px;
+        .feature-item {
+            background: rgba(45, 45, 45, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 25px;
             text-align: center;
-            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
 
-        .stat-value {
+        .feature-item:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .menu-item {
+            background: rgba(45, 45, 45, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-content {
+            padding: 30px 25px;
+        }
+
+        .menu-name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            color: #d4af37;
+        }
+
+        .menu-description {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: #ccc;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .menu-highlight {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid #d4af37;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #e6e6e6;
+        }
+
+        .price {
             font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-weight: 600;
+            color: #d4af37;
+            letter-spacing: 0.05em;
         }
 
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        .cta-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(26, 26, 26, 0.9) 100%);
+            padding: 80px 30px;
+            text-align: center;
         }
 
-        /* レスポンシブ対応 */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 10px;
+        .cta-title {
+            font-size: clamp(1.8rem, 6vw, 2.3rem);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 25px;
+            color: #d4af37;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            /* 修正点: line-heightを調整し、モバイルでの改行後の行のまとまりを良くする */
+            line-height: 1.8; 
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .location-info {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 768px) {
+            .menu-grid {
+                max-width: 1200px;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
-            .materials-grid,
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .material-details {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
+
+            .feature-grid {
+                max-width: 1000px;
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🌮 ケサディーヤの材料</h1>
-        </div>
+    <section class="hero">
+        <h1 class="logo">本格ケサディーヤ</h1>
+        <p class="tagline">高専祭限定<br>こだわりの味をお届けします</p>
+        <div class="scroll-indicator">詳しく見る ↓</div>
+    </section>
 
-        <div class="section">
-            <h2>🔥 共通材料</h2>
-            <div class="materials-grid">
-                <div class="material-item">
-                    <div class="material-name">トルティーヤ</div>
-                    <div class="material-comment">小麦製orコーン製は、現在検討中です。直径20～25 cmくらい</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 1枚</span>
-                        <div class="price-input">
-                            <input type="number" id="tortilla-price" value="34" step="0.01">
-                            <span class="price-unit">円/枚</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-item">
-                    <div class="material-name">かけるチーズ</div>
-                    <div class="material-comment">合計で10kg。恐ろしい量ですね。</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 25g</span>
-                        <div class="price-input">
-                            <input type="number" id="cheese-price" value="0.88" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-item">
-                    <div class="material-name">包む紙</div>
-                    <div class="material-comment">ネット販売が一番安いかな。</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 1枚</span>
-                        <div class="price-input">
-                            <input type="number" id="paper-price" value="3.5" step="0.01">
-                            <span class="price-unit">円/枚</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-item">
-                    <div class="material-name">サラダ油</div>
-                    <div class="material-comment">調理用として使用</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 4g</span>
-                        <div class="price-input">
-                            <input type="number" id="oil-price" value="0.5" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
+    <section class="section">
+        <h2 class="section-title fade-in">ケサディーヤって？</h2>
+        <p class="intro-text fade-in">
+            メキシコ生まれの伝統料理、ケサディーヤ。<br>
+            トルティーヤにチーズと具材を挟んで焼き上げた、<br>
+            香ばしくてとろける美味しさが魅力です。<br><br>
+            私たちは本格的な製法にこだわり、<br>
+            一つ一つ丁寧に焼き上げています。
+        </p>
+
+        <div class="feature-grid">
+            <div class="feature-item fade-in">
+                <div class="feature-icon">🔥</div>
+                <h3 class="feature-title">焼きたて熱々</h3>
+                <p class="feature-desc">ご注文を受けてから一つ一つ丁寧に焼き上げます</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">🧀</div>
+                <h3 class="feature-title">とろけるチーズ</h3>
+                <p class="feature-desc">たっぷりのチーズが絶妙にとろけます</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">こだわりの具材</h3>
+                <p class="feature-desc">厳選した食材で最高の味わいを実現</p>
             </div>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>🍫 チョコマシュマロケサディーヤ</h2>
-            <div class="materials-grid">
-                <div class="material-item">
-                    <div class="material-name">マシュマロ</div>
-                    <div class="material-comment">小さめサイズの方が都合はいいかな</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 15g</span>
-                        <div class="price-input">
-                            <input type="number" id="marshmallow-price" value="0.8" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-item">
-                    <div class="material-name">チョコソース</div>
-                    <div class="material-comment">上からかけるタイプのやつ</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 20g</span>
-                        <div class="price-input">
-                            <input type="number" id="chocolate-price" value="0.82" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🐟 ツナマヨケサディーヤ</h2>
-            <div class="materials-grid">
-                <div class="material-item">
-                    <div class="material-name">ツナ</div>
-                    <div class="material-comment">単価が高いので、出来ればケチりたい。笑</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 20g</span>
-                        <div class="price-input">
-                            <input type="number" id="tuna-price" value="1.32" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-item">
-                    <div class="material-name">マヨネーズ</div>
-                    <div class="material-comment">カロリーは考えちゃダメよ。</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 10g</span>
-                        <div class="price-input">
-                            <input type="number" id="mayo-price" value="1.55" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="material-item">
-                    <div class="material-name">コーン</div>
-                    <div class="material-comment">缶でもパックでも。</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 20g</span>
-                        <div class="price-input">
-                            <input type="number" id="corn-price" value="0.26" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🌶️ メキシカンケサディーヤ</h2>
-            <div class="materials-grid">
-                <div class="material-item">
-                    <div class="material-name">タコスミート</div>
-                    <div class="material-comment">結構値段が張るかなぁ...<br>牛そぼろ瓶＋それっぽいスパイスで安く済ませるのもアリかなぁ、と。<br>他に案があればぜひ...！</div>
-                    <div class="material-details">
-                        <span class="usage-info">使用量: 30g</span>
-                        <div class="price-input">
-                            <input type="number" id="meat-price" value="2.7" step="0.01">
-                            <span class="price-unit">円/g</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section calculation-section">
-            <h2>💰 原価計算結果</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-title">🍫 チョコマシュマロ</div>
-                    <div class="ingredient-list">
-                        <div class="ingredient">
-                            <span>トルティーヤ (1枚)</span>
-                            <span id="choco-tortilla">34.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>包む紙 (1枚)</span>
-                            <span id="choco-paper">3.50円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>サラダ油 (4g)</span>
-                            <span id="choco-oil">2.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>マシュマロ (15g)</span>
-                            <span id="choco-marshmallow">12.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>チョコソース (20g)</span>
-                            <span id="choco-chocolate">16.40円</span>
-                        </div>
-                    </div>
-                    <div class="total-cost">
-                        原価: <span id="choco-total">67.90円</span>
-                    </div>
-                    <div class="profit-analysis" id="choco-profit">
-                        利益率: 77% - 素晴らしい！
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-title">🐟 ツナマヨ</div>
-                    <div class="ingredient-list">
-                        <div class="ingredient">
-                            <span>トルティーヤ (1枚)</span>
-                            <span id="tuna-tortilla">34.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>かけるチーズ (25g)</span>
-                            <span id="tuna-cheese">22.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>包む紙 (1枚)</span>
-                            <span id="tuna-paper">3.50円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>サラダ油 (4g)</span>
-                            <span id="tuna-oil">2.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>ツナ (20g)</span>
-                            <span id="tuna-tuna">26.40円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>マヨネーズ (10g)</span>
-                            <span id="tuna-mayo">15.50円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>コーン (20g)</span>
-                            <span id="tuna-corn">5.20円</span>
-                        </div>
-                    </div>
-                    <div class="total-cost">
-                        原価: <span id="tuna-total">108.60円</span>
-                    </div>
-                    <div class="profit-analysis" id="tuna-profit">
-                        利益率: 64% - とても良い！
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-title">🌶️ メキシカン</div>
-                    <div class="ingredient-list">
-                        <div class="ingredient">
-                            <span>トルティーヤ (1枚)</span>
-                            <span id="mexican-tortilla">34.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>かけるチーズ (25g)</span>
-                            <span id="mexican-cheese">22.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>包む紙 (1枚)</span>
-                            <span id="mexican-paper">3.50円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>サラダ油 (4g)</span>
-                            <span id="mexican-oil">2.00円</span>
-                        </div>
-                        <div class="ingredient">
-                            <span>タコスミート (40g)</span>
-                            <span id="mexican-meat">108.00円</span>
-                        </div>
-                    </div>
-                    <div class="total-cost">
-                        原価: <span id="mexican-total">169.50円</span>
-                    </div>
-                    <div class="profit-analysis" id="mexican-profit">
-                        利益率: 44% - 注意が必要
-                    </div>
+    <section class="section">
+        <h2 class="section-title fade-in">メニュー</h2>
+        <div class="menu-grid">
+            <div class="menu-item fade-in">
+                <img src="mex.jpeg" alt="メキシカンケサディーヤ" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-name">メキシカンケサディーヤ</h3>
+                    <p class="menu-description">本場メキシコの味を再現した本格派。一口食べれば、メキシコの風を感じられること間違いなし。スパイシーな味わいととろけるチーズの絶妙なハーモニーをお楽しみください。</p>
+                    <p class="price">¥ 300</p>
                 </div>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value" id="avg-cost">115円</div>
-                    <div class="stat-label">平均原価</div>
+            <div class="menu-item fade-in">
+                <img src="tun.jpeg" alt="ツナマヨコーンケサディーヤ" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-name">ツナマヨコーンケサディーヤ</h3>
+                    <p class="menu-description">日本人に親しみやすい味わい。ツナとマヨネーズのクリーミーさに、コーンの甘みと食感がプラス。とろけるチーズとの相性も抜群です。和の風味と洋の技法が融合した、誰もが笑顔になる一品です。</p>
+                    <p class="price">¥ 300</p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="avg-profit">62%</div>
-                    <div class="stat-label">平均利益率</div>
-                </div>
+            </div>
 
+            <div class="menu-item fade-in">
+                <img src="cl.jpeg" alt="チョコマシュマロケサディーヤ" class="menu-image">
+                <div class="menu-content">
+                    <h3 class="menu-name">チョコマシュマロケサディーヤ</h3>
+                    <p class="menu-description">スイーツ感覚で楽しめるデザート系ケサディーヤ。 熱々のトルティーヤでチョコとマシュマロが溶け合い、外はカリッと中はとろける幸せな味わい。食後のデザートにもぴったりです。</p>
+                    <p class="price">¥ 300</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <button class="update-btn" onclick="calculateAll()">💡 原価を再計算</button>
+    <section class="cta-section">
+        <h2 class="cta-title fade-in">高専祭限定の特別な味</h2>
+        <p class="cta-text fade-in">
+            この機会にしか味わえない本格ケサディーヤを、<br>
+            ぜひお楽しみください。<br><br>
+            焼きたて熱々の美味しさを、<br>
+            あなたにお届けします。
+        </p>
+        <div class="location-info fade-in">📍 出店場所：一般科棟　ステージ横</div>
+        <div class="location-info fade-in">🕐 営業時間：10:00～15:00</div>
+    </section>
 
-        <div class="note">
-            <strong>ひとこと</strong><br>
-            赤字が怖いですね。これだけ準備しておいて売れなかったらどうしましょう...
-        </div>
-    </div>
+    <footer>
+        <p>本格ケサディーヤ © 2025 高専祭</p>
+    </footer>
 
     <script>
-        function calculateAll() {
-            // 共通材料の価格取得
-            const tortillaPrice = parseFloat(document.getElementById('tortilla-price').value) || 0;
-            const cheesePrice = parseFloat(document.getElementById('cheese-price').value) || 0;
-            const paperPrice = parseFloat(document.getElementById('paper-price').value) || 0;
-            const oilPrice = parseFloat(document.getElementById('oil-price').value) || 0;
-            
-            // 個別材料の価格取得
-            const marshmallowPrice = parseFloat(document.getElementById('marshmallow-price').value) || 0;
-            const chocolatePrice = parseFloat(document.getElementById('chocolate-price').value) || 0;
-            const tunaPrice = parseFloat(document.getElementById('tuna-price').value) || 0;
-            const mayoPrice = parseFloat(document.getElementById('mayo-price').value) || 0;
-            const cornPrice = parseFloat(document.getElementById('corn-price').value) || 0;
-            const meatPrice = parseFloat(document.getElementById('meat-price').value) || 0;
-
-            // チョコマシュマロケサディーヤの計算
-            const chocoTortillaCost = tortillaPrice * 1;
-            const chocoPaperCost = paperPrice * 1;
-            const chocoOilCost = oilPrice * 4;
-            const chocoMarshmallowCost = marshmallowPrice * 15;
-            const chocoChocolateCost = chocolatePrice * 20;
-            const chocoTotalCost = chocoTortillaCost + chocoPaperCost + chocoOilCost + chocoMarshmallowCost + chocoChocolateCost;
-
-            // ツナマヨケサディーヤの計算
-            const tunaTortillaCost = tortillaPrice * 1;
-            const tunaCheeseCost = cheesePrice * 25;
-            const tunaPaperCost = paperPrice * 1;
-            const tunaOilCost = oilPrice * 4;
-            const tunaTunaCost = tunaPrice * 20;
-            const tunaMayoCost = mayoPrice * 10;
-            const tunaCornCost = cornPrice * 20;
-            const tunaTotalCost = tunaTortillaCost + tunaCheeseCost + tunaPaperCost + tunaOilCost + tunaTunaCost + tunaMayoCost + tunaCornCost;
-
-            // メキシカンケサディーヤの計算
-            const mexicanTortillaCost = tortillaPrice * 1;
-            const mexicanCheeseCost = cheesePrice * 25;
-            const mexicanPaperCost = paperPrice * 1;
-            const mexicanOilCost = oilPrice * 4;
-            const mexicanMeatCost = meatPrice * 40;
-            const mexicanTotalCost = mexicanTortillaCost + mexicanCheeseCost + mexicanPaperCost + mexicanOilCost + mexicanMeatCost;
-
-            // 表示の更新
-            updateProductDisplay('choco', chocoTortillaCost, chocoPaperCost, chocoOilCost, chocoMarshmallowCost, chocoChocolateCost, chocoTotalCost);
-            updateProductDisplay('tuna', tunaTortillaCost, tunaCheeseCost, tunaPaperCost, tunaOilCost, tunaTunaCost, tunaMayoCost, tunaCornCost, tunaTotalCost);
-            updateProductDisplay('mexican', mexicanTortillaCost, mexicanCheeseCost, mexicanPaperCost, mexicanOilCost, mexicanMeatCost, null, null, mexicanTotalCost);
-
-            // 統計の更新
-            const avgCost = Math.round((chocoTotalCost + tunaTotalCost + mexicanTotalCost) / 3);
-            const totalRevenue = 900; // 300円 × 3個
-            const totalCost = chocoTotalCost + tunaTotalCost + mexicanTotalCost;
-            const totalProfit = totalRevenue - totalCost;
-            const avgProfitRate = Math.round((totalProfit / totalRevenue) * 100);
-
-            document.getElementById('avg-cost').textContent = avgCost + '円';
-            document.getElementById('avg-profit').textContent = avgProfitRate + '%';
-            document.getElementById('total-revenue').textContent = totalRevenue + '円';
-            document.getElementById('total-profit').textContent = Math.round(totalProfit) + '円';
-        }
-
-        function updateProductDisplay(type, ...costs) {
-            const totalCost = costs[costs.length - 1];
-            const sellPrice = 300;
-            const profit = sellPrice - totalCost;
-            const profitRate = (profit / sellPrice) * 100;
-
-            // 原価表示の更新
-            if (type === 'choco') {
-                document.getElementById('choco-tortilla').textContent = costs[0].toFixed(2) + '円';
-                document.getElementById('choco-paper').textContent = costs[1].toFixed(2) + '円';
-                document.getElementById('choco-oil').textContent = costs[2].toFixed(2) + '円';
-                document.getElementById('choco-marshmallow').textContent = costs[3].toFixed(2) + '円';
-                document.getElementById('choco-chocolate').textContent = costs[4].toFixed(2) + '円';
-            } else if (type === 'tuna') {
-                document.getElementById('tuna-tortilla').textContent = costs[0].toFixed(2) + '円';
-                document.getElementById('tuna-cheese').textContent = costs[1].toFixed(2) + '円';
-                document.getElementById('tuna-paper').textContent = costs[2].toFixed(2) + '円';
-                document.getElementById('tuna-oil').textContent = costs[3].toFixed(2) + '円';
-                document.getElementById('tuna-tuna').textContent = costs[4].toFixed(2) + '円';
-                document.getElementById('tuna-mayo').textContent = costs[5].toFixed(2) + '円';
-                document.getElementById('tuna-corn').textContent = costs[6].toFixed(2) + '円';
-            } else if (type === 'mexican') {
-                document.getElementById('mexican-tortilla').textContent = costs[0].toFixed(2) + '円';
-                document.getElementById('mexican-cheese').textContent = costs[1].toFixed(2) + '円';
-                document.getElementById('mexican-paper').textContent = costs[2].toFixed(2) + '円';
-                document.getElementById('mexican-oil').textContent = costs[3].toFixed(2) + '円';
-                document.getElementById('mexican-meat').textContent = costs[4].toFixed(2) + '円';
-            }
-
-            // 合計原価の表示
-            document.getElementById(type + '-total').textContent = totalCost.toFixed(2) + '円';
-
-            // 利益率の表示と色分け
-            const profitElement = document.getElementById(type + '-profit');
-            let profitMessage = '';
-            let profitClass = '';
-
-            if (profitRate >= 70) {
-                profitMessage = `利益率: ${profitRate.toFixed(0)}% - 💮`;
-                profitClass = 'profit-excellent';
-            } else if (profitRate >= 60) {
-                profitMessage = `利益率: ${profitRate.toFixed(0)}% - ◎`;
-                profitClass = 'profit-good';
-            } else if (profitRate >= 50) {
-                profitMessage = `利益率: ${profitRate.toFixed(0)}% - 〇`;
-                profitClass = 'profit-good';
-            } else if (profitRate >= 40) {
-                profitMessage = `利益率: ${profitRate.toFixed(0)}% - △`;
-                profitClass = 'profit-warning';
-            } else {
-                profitMessage = `利益率: ${profitRate.toFixed(0)}% - ✕`;
-                profitClass = 'profit-danger';
-            }
-
-            profitElement.textContent = profitMessage;
-            profitElement.className = 'profit-analysis ' + profitClass;
-        }
-
-        // 入力フィールドの変更時に自動計算
-        document.addEventListener('input', function(e) {
-            if (e.target.type === 'number') {
-                calculateAll();
-            }
+        document.querySelector('.scroll-indicator').addEventListener('click', function() {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
         });
 
-        // 初期計算実行
-        calculateAll();
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
-
