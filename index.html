@@ -165,20 +165,28 @@
             }
         }
 
-        /* 豪華な数字のためのスタイル */
+        /* 豪華な数字のためのスタイル - スマートフォン対応のためにサイズを縮小 */
         .deluxe-number {
-            font-size: 5rem; /* サイズアップ */
+            font-size: 3.5rem; /* 5remから3.5remにサイズダウン */
             font-weight: 900;
-            letter-spacing: 8px; /* 文字間を広げる */
+            letter-spacing: 6px; /* 8pxから6pxに文字間を調整 */
             margin: 40px 0;
             /* ゴールデンな輝きと強い影 */
-            text-shadow: 0 0 10px #ffed0d, 0 0 40px #ffed0d, 0 0 80px #deb547;
+            text-shadow: 0 0 10px #ffed0d, 0 0 30px #ffed0d, 0 0 60px #deb547; /* 影を調整 */
             /* 鼓動をさらに強く */
             animation: pulseDeluxe 1.5s ease-in-out infinite;
             background: linear-gradient(45deg, #ffe066 0%, #ffc40d 50%, #deb547 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        
+        /* さらに小さい画面のためにメディアクエリで調整 */
+        @media (max-width: 400px) {
+            .deluxe-number {
+                font-size: 3rem; /* さらに小さい画面では3remに */
+                letter-spacing: 4px;
+            }
         }
 
         @keyframes pulseDeluxe {
