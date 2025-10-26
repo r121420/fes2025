@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ケサディーヤ | 神戸高専祭　2025</title>
-    
-   
-    <meta name="description" content="メキシコの家庭料理、ケサディーヤ。香ばしくてとろける美味しさが魅力です。焼き立てアツアツ、高専祭限定のこだわりの味をお届けします。"/>
+    <title>数字で見るESSケサディーヤ</title>
+    <meta name="description" content="ESSケサディーヤの売上報告用サイトです。皆さん、本当にお疲れさまでした！"/>
     <meta property="og:title" content="神戸高専　ESS部">
     <meta property="og:site_name" content="神戸高専　ESS部">
     <meta name="robots" content="max-image-preview:large" />
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ja-JP">
     <meta property="og:image" content="">
-    <meta property="og:description" content="メキシコの家庭料理、ケサディーヤ。香ばしくてとろける美味しさが魅力です。焼き立てアツアツ、高専祭限定のこだわりの味をお届けします。" />
+    <meta property="og:description" content="ESSケサディーヤの売上報告用サイトです。皆さん、本当にお疲れさまでした！" />
     <meta name="twitter:card" content="summary">
     <link href="icon.png" rel="apple-touch-icon">
     <link href="icon.png" rel="icon" type="image/png">
-    
     <style>
         * {
             margin: 0;
@@ -26,402 +23,393 @@
         }
 
         body {
-            font-family: 'Yu Gothic', 'Hiragino Sans', 'Meiryo', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            background: linear-gradient(135deg, #3989e1 0%, #2854bb 50%, #1600b0 100%);
             color: #fff;
             overflow-x: hidden;
         }
 
-        .hero {
-            height: 100vh;
+        .section {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            position: relative;
-            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
-            padding: 0 20px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .logo {
-            font-size: clamp(2rem, 8vw, 3.5rem);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 50%, #d4af37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .tagline {
-            font-size: clamp(1rem, 4vw, 1.3rem);
-            letter-spacing: 0.1em;
-            color: #d4af37;
-            margin-bottom: 2rem;
-            font-weight: 400;
-            position: relative;
-            z-index: 1;
-            line-height: 1.6;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            color: #d4af37;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        .section {
-            padding: 60px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 50px;
-            color: #d4af37;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-        }
-
-        .intro-text {
-            max-width: 600px;
-            text-align: center;
-            font-size: 1.1rem;
-            /* 修正点: line-heightを調整し、モバイルでの改行後の行のまとまりを良くする */
-            line-height: 1.8; 
-            color: #ccc;
-            margin-bottom: 60px;
-            padding: 0 20px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 500px;
-            width: 100%;
-            margin-bottom: 60px;
-        }
-
-        .feature-item {
-            background: rgba(45, 45, 45, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            border-color: rgba(212, 175, 55, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #d4af37;
-            margin-bottom: 10px;
-        }
-
-        .feature-desc {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #ccc;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .menu-item {
-            background: rgba(45, 45, 45, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-            border-color: rgba(212, 175, 55, 0.6);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
-        }
-
-        .menu-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .menu-content {
-            padding: 30px 25px;
-        }
-
-        .menu-name {
-            font-size: 1.6rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 12px;
-            color: #d4af37;
-        }
-
-        .menu-description {
-            font-size: 1rem;
-            line-height: 1.9;
-            color: #ccc;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .menu-highlight {
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 3px solid #d4af37;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #e6e6e6;
-        }
-
-        .price {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #d4af37;
-            letter-spacing: 0.05em;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(26, 26, 26, 0.9) 100%);
-            padding: 80px 30px;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: clamp(1.8rem, 6vw, 2.3rem);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 25px;
-            color: #d4af37;
-        }
-
-        .cta-text {
-            font-size: 1.1rem;
-            /* 修正点: line-heightを調整し、モバイルでの改行後の行のまとまりを良くする */
-            line-height: 1.8; 
-            color: #ccc;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .location-info {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 15px;
-            letter-spacing: 0.05em;
-            line-height: 1.8;
-        }
-
-        footer {
             padding: 40px 20px;
-            text-align: center;
-            color: rgba(212, 175, 55, 0.6);
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .fade-in {
+            position: relative;
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(50px);
+            transition: all 1.5s ease;
         }
 
-        .fade-in.visible {
+        .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        @media (min-width: 768px) {
-            .menu-grid {
-                max-width: 1200px;
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: sparkle 2s infinite ease-in-out;
+        }
 
-            .feature-grid {
-                max-width: 1000px;
-                grid-template-columns: repeat(3, 1fr);
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
             }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 60px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            animation: cardFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .item-value {
+            font-size: 1.3rem;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .big-number {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            margin: 30px 0;
+            text-shadow: 0 0 40px rgba(241, 236, 173, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* 豪華な数字のためのスタイル */
+        .deluxe-number {
+            font-size: 5rem; /* サイズアップ */
+            font-weight: 900;
+            letter-spacing: 8px; /* 文字間を広げる */
+            margin: 40px 0;
+            /* ゴールデンな輝きと強い影 */
+            text-shadow: 0 0 10px #ffed0d, 0 0 40px #ffed0d, 0 0 80px #deb547;
+            /* 鼓動をさらに強く */
+            animation: pulseDeluxe 1.5s ease-in-out infinite;
+            background: linear-gradient(45deg, #ffe066 0%, #ffc40d 50%, #deb547 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes pulseDeluxe {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.95;
+            }
+        }
+
+        .day-label {
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .spacer {
+            min-height: 50vh;
+        }
+
+        .final-section {
+            min-height: 120vh;
+        }
+
+        .thank-you {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-top: 60px;
+            text-align: center;
+            line-height: 2;
+            opacity: 0;
+            animation: fadeIn 2s ease 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .message {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-top: 30px;
+            text-align: center;
+            line-height: 1.8;
+            max-width: 320px;
+            opacity: 0;
+            animation: fadeIn 2s ease 2s forwards;
+        }
+
+        /* 「そして...」のためのスタイル */
+        .interjection {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 10px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            color: #fff;
+            animation: floatAndGlow 3s ease-in-out infinite;
+        }
+        @keyframes floatAndGlow {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-15px);
+                opacity: 0.9;
+                text-shadow: 0 0 50px rgba(255, 255, 255, 1);
+            }
+        }
+
+        .scroll-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .profit-highlight {
+            background: linear-gradient(135deg, #ffed0d 0%, #deb547 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <h1 class="logo">本格ケサディーヤ</h1>
-        <p class="tagline">高専祭限定<br>こだわりの味をお届けします</p>
-        <div class="scroll-indicator">詳しく見る ↓</div>
-    </section>
+    <div class="section visible">
+        <div class="title">高専祭</div>
+        <div class="subtitle">最終売上報告</div>
+        <div class="message">みんなの頑張りが<br>カタチになりました！</div>
+    </div>
 
-    <section class="section">
-        <h2 class="section-title fade-in">ケサディーヤって？</h2>
-        <p class="intro-text fade-in">
-            メキシコ生まれの伝統料理、ケサディーヤ。<br>
-            トルティーヤにチーズと具材を挟んで焼き上げた、<br>
-            香ばしくてとろける美味しさが魅力です。<br><br>
-            私たちは本格的な製法にこだわり、<br>
-            一つ一つ丁寧に焼き上げています。
-        </p>
+    <div class="spacer"></div>
 
-        <div class="feature-grid">
-            <div class="feature-item fade-in">
-                <div class="feature-icon">🔥</div>
-                <h3 class="feature-title">焼きたて熱々</h3>
-                <p class="feature-desc">ご注文を受けてから一つ一つ丁寧に焼き上げます</p>
+    <div class="section" id="materials">
+        <div class="card-title">使用した食材</div>
+        <div class="card">
+            <div class="item">
+                <span class="item-name">ツナ</span>
+                <span class="item-value">2,770g</span>
             </div>
-            <div class="feature-item fade-in">
-                <div class="feature-icon">🧀</div>
-                <h3 class="feature-title">とろけるチーズ</h3>
-                <p class="feature-desc">たっぷりのチーズが絶妙にとろけます</p>
+            <div class="item">
+                <span class="item-name">そぼろ</span>
+                <span class="item-value">8,670g</span>
             </div>
-            <div class="feature-item fade-in">
-                <div class="feature-icon">✨</div>
-                <h3 class="feature-title">こだわりの具材</h3>
-                <p class="feature-desc">厳選した食材で最高の味わいを実現</p>
+            <div class="item">
+                <span class="item-name">チーズ</span>
+                <span class="item-value">7,300g</span>
             </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title fade-in">メニュー</h2>
-        <div class="menu-grid">
-            <div class="menu-item fade-in">
-                <img src="Mex.jpeg" alt="メキシカンケサディーヤ" class="menu-image">
-                <div class="menu-content">
-                    <h3 class="menu-name">メキシカンケサディーヤ</h3>
-                    <p class="menu-description">本場メキシコの味を再現した本格派。一口食べれば、メキシコの風を感じられること間違いなし。スパイシーな味わいととろけるチーズの絶妙なハーモニーをお楽しみください。</p>
-                    <p class="price">¥ 300</p>
-                </div>
+            <div class="item">
+                <span class="item-name">チリソース</span>
+                <span class="item-value">2.6L</span>
             </div>
-
-            <div class="menu-item fade-in">
-                <img src="Tun.jpeg" alt="ツナマヨコーンケサディーヤ" class="menu-image">
-                <div class="menu-content">
-                    <h3 class="menu-name">ツナマヨコーンケサディーヤ</h3>
-                    <p class="menu-description">日本人に親しみやすい味わい。ツナとマヨネーズのクリーミーさに、コーンの甘みと食感がプラス。とろけるチーズとの相性も抜群です。和の風味と洋の技法が融合した、誰もが笑顔になる一品です。</p>
-                    <p class="price">¥ 300</p>
-                </div>
-            </div>
-
-            <div class="menu-item fade-in">
-                <img src="Cl.jpeg" alt="チョコマシュマロケサディーヤ" class="menu-image">
-                <div class="menu-content">
-                    <h3 class="menu-name">チョコマシュマロケサディーヤ</h3>
-                    <p class="menu-description">スイーツ感覚で楽しめるデザート系ケサディーヤ。 熱々のトルティーヤでチョコとマシュマロが溶け合い、外はカリッと中はとろける幸せな味わい。食後のデザートにもぴったりです。</p>
-                    <p class="price">¥ 300</p>
-                </div>
+            <div class="item">
+                <span class="item-name">マシュマロ</span>
+                <span class="item-value">約290個</span>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="cta-section">
-        <h2 class="cta-title fade-in">高専祭限定の特別な味</h2>
-        <p class="cta-text fade-in">
-            この機会にしか味わえない本格ケサディーヤを、<br>
-            ぜひお楽しみください。<br><br>
-            焼きたて熱々の美味しさを、<br>
-            あなたにお届けします。
-        </p>
-        <div class="location-info fade-in">📍 出店場所：一般科棟　ステージ横</div>
-        <div class="location-info fade-in">🕐 営業時間：10:00～15:00</div>
-    </section>
+    <div class="spacer"></div>
 
-    <footer>
-        <p>本格ケサディーヤ © 2025 高専祭</p>
-    </footer>
+    <div class="section" id="sales">
+        <div class="card-title">販売実績</div>
+        <div class="card">
+            <div class="item">
+                <span class="item-name">メキシカン</span>
+                <span class="item-value">415個</span>
+            </div>
+            <div class="item">
+                <span class="item-name">ツナマヨ</span>
+                <span class="item-value">125個</span>
+            </div>
+            <div class="item">
+                <span class="item-name">チョコ</span>
+                <span class="item-value">132個</span>
+            </div>
+        </div>
+    </div>
 
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="section" id="day1">
+        <div class="day-label">1日目</div>
+        <div class="big-number">¥79,200</div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="section">
+        <div class="interjection">そして...</div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="section" id="day2">
+        <div class="day-label">2日目</div>
+        <div class="deluxe-number">¥121,800</div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="section" id="total">
+        <div class="day-label">合計売上</div>
+        <div class="deluxe-number">¥201,000</div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="section final-section" id="profit">
+        <div class="day-label">純利益</div>
+        <div class="big-number profit-highlight">¥100,913</div>
+        <div class="thank-you">本当にお疲れ様！</div>
+        <div class="message">みんなの努力と協力が<br>この素晴らしい結果を<br>生み出しました！<br><br>最高のチームでした！！</div>
+    </div>
+    <div class="scroll-hint">SCROLL ↓</div>
     <script>
-        document.querySelector('.scroll-indicator').addEventListener('click', function() {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
-        });
+        // Create sparkles
+        function createSparkles() {
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(sparkle);
+            }
+        }
 
+        createSparkles();
+
+        // Intersection Observer for scroll animations
+        // 既存のvisibleクラスを持つセクションを除外
+        const sections = document.querySelectorAll('.section:not(.visible)');
         const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -429,20 +417,22 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+        sections.forEach(section => {
+            observer.observe(section);
         });
 
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('touchstart', function() {
-                this.style.transform = 'translateY(-5px) scale(1.02)';
-            });
-            
-            item.addEventListener('touchend', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        // Hide scroll hint after scrolling
+        let scrolled = false;
+        window.addEventListener('scroll', () => {
+            if (!scrolled && window.scrollY > 100) {
+                scrolled = true;
+                const scrollHint = document.querySelector('.scroll-hint');
+                if(scrollHint) {
+                    scrollHint.style.opacity = '0';
+                    scrollHint.style.transition = 'opacity 0.5s ease';
+                }
+            }
         });
     </script>
 </body>
 </html>
-
